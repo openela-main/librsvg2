@@ -13,12 +13,12 @@
 Name:           librsvg2
 Summary:        An SVG library based on cairo
 Version:        2.50.7
-Release:        1%{?dist}.1
+Release:        2%{?dist}
 
 License:        LGPLv2+
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source0:        https://download.gnome.org/sources/librsvg/2.50/librsvg-%{version}.tar.xz
-# https://bugzilla.redhat.com/show_bug.cgi?id=2226695
+# https://bugzilla.redhat.com/show_bug.cgi?id=2224947
 Patch0:         librsvg2-CVE-2023-38633.patch
 
 BuildRequires:  chrpath
@@ -141,8 +141,8 @@ rm -vrf %{buildroot}%{_datadir}/doc
 %{_mandir}/man1/rsvg-convert.1*
 
 %changelog
-* Fri Aug 11 2023 David King <dking@redhat.com> - 2.50.7-1.1
-- Fix CVE-2023-38633 (#2226695)
+* Thu Aug 10 2023 David King <amigadave@amigadave.com> - 2.50.7-2
+- Fix CVE-2023-38633 (#2224947)
 
 * Tue Aug 24 2021 Kalev Lember <klember@redhat.com> - 2.50.7-1
 - Update to 2.50.7
