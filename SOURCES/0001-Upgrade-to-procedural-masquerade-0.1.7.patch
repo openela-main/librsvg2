@@ -1,0 +1,229 @@
+From 6aacf7c0e81082dc414396f7059a7a2893c4600b Mon Sep 17 00:00:00 2001
+From: rpm-build <rpm-build>
+Date: Mon, 16 Jan 2023 13:24:17 -0800
+Subject: [PATCH] Upgrade to procedural-masquerade 0.1.7
+
+---
+ Cargo.lock                                    |   8 +-
+ .../.cargo-checksum.json                      |   2 +-
+ vendor/procedural-masquerade/.cargo-ok        |   0
+ vendor/procedural-masquerade/Cargo.toml       |   4 +-
+ vendor/procedural-masquerade/lib.rs           | 111 ++++++++++++------
+ 5 files changed, 79 insertions(+), 46 deletions(-)
+ delete mode 100644 vendor/procedural-masquerade/.cargo-ok
+
+diff --git a/Cargo.lock b/Cargo.lock
+index c49356d08a6d..a4899a02041d 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -54,7 +54,7 @@ dependencies = [
+  "itoa 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
+  "matches 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
+  "phf 0.7.21 (registry+https://github.com/rust-lang/crates.io-index)",
+- "procedural-masquerade 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "procedural-masquerade 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
+  "quote 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)",
+  "smallvec 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "syn 0.11.11 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -67,7 +67,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ dependencies = [
+  "phf_codegen 0.7.21 (registry+https://github.com/rust-lang/crates.io-index)",
+  "proc-macro2 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)",
+- "procedural-masquerade 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)",
++ "procedural-masquerade 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
+  "quote 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",
+  "syn 0.12.14 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+@@ -295,7 +295,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "procedural-masquerade"
+-version = "0.1.5"
++version = "0.1.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ 
+ [[package]]
+@@ -513,7 +513,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ "checksum phf_shared 0.7.21 (registry+https://github.com/rust-lang/crates.io-index)" = "07e24b0ca9643bdecd0632f2b3da6b1b89bbb0030e0b992afc1113b23a7bc2f2"
+ "checksum pkg-config 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "3a8b4c6b8165cd1a1cd4b9b120978131389f64bdaf456435caa41e630edba903"
+ "checksum proc-macro2 0.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "cd07deb3c6d1d9ff827999c7f9b04cdfd66b1b17ae508e14fe47b620f2282ae0"
+-"checksum procedural-masquerade 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "dc1bcafee1590f81acb329ae45ec627b318123f085153913620316ae9a144b2a"
++"checksum procedural-masquerade 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)" = "8f1383dff4092fe903ac180e391a8d4121cc48f08ccf850614b0290c6673b69d"
+ "checksum quote 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)" = "7a6e920b65c65f10b2ae65c831a81a073a89edd28c7cce89475bff467ab4167a"
+ "checksum quote 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)" = "1eca14c727ad12702eb4b6bfb5a232287dcf8385cb8ca83a3eeaf6519c44c408"
+ "checksum rand 0.3.22 (registry+https://github.com/rust-lang/crates.io-index)" = "15a732abf9d20f0ad8eeb6f909bf6868722d9a06e1e50802b6a70351f40b4eb1"
+diff --git a/vendor/procedural-masquerade/.cargo-checksum.json b/vendor/procedural-masquerade/.cargo-checksum.json
+index e5ded3a268ba..d80306902f03 100644
+--- a/vendor/procedural-masquerade/.cargo-checksum.json
++++ b/vendor/procedural-masquerade/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{".cargo-ok":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","Cargo.toml":"78faf5c70ec7dc8d1e18ccf508a483220b31a4d99ce171083f9df709c6d930b1","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"4bf2f5a98355718dc876a821d76cfc9802c43d3cbdc5b9d46a1cd5dfa5d6b01a","lib.rs":"56dc915a0343a75606bd33056f7bbb1832112683903786e53bac56e855afe380"},"package":"dc1bcafee1590f81acb329ae45ec627b318123f085153913620316ae9a144b2a"}
+\ No newline at end of file
++{"files":{"Cargo.toml":"39b050fe906ec0088242ac802f4e8305196f1b0d8543322c17931b219b2e0619","LICENSE-APACHE":"a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2","LICENSE-MIT":"4bf2f5a98355718dc876a821d76cfc9802c43d3cbdc5b9d46a1cd5dfa5d6b01a","lib.rs":"d549db3924ec4026718d241f4227c98d17dc6f3a06bdc6a3581cee8cb43f7ac3"},"package":"8f1383dff4092fe903ac180e391a8d4121cc48f08ccf850614b0290c6673b69d"}
+\ No newline at end of file
+diff --git a/vendor/procedural-masquerade/.cargo-ok b/vendor/procedural-masquerade/.cargo-ok
+deleted file mode 100644
+index e69de29bb2d1..000000000000
+diff --git a/vendor/procedural-masquerade/Cargo.toml b/vendor/procedural-masquerade/Cargo.toml
+index f8b5f2c57308..9c004599b496 100644
+--- a/vendor/procedural-masquerade/Cargo.toml
++++ b/vendor/procedural-masquerade/Cargo.toml
+@@ -3,7 +3,7 @@
+ # When uploading crates to the registry Cargo will automatically
+ # "normalize" Cargo.toml files for maximal compatibility
+ # with all versions of Cargo and also rewrite `path` dependencies
+-# to registry (e.g. crates.io) dependencies
++# to registry (e.g., crates.io) dependencies
+ #
+ # If you believe there's an error in this file please file an
+ # issue against the rust-lang/cargo repository. If you're
+@@ -12,7 +12,7 @@
+ 
+ [package]
+ name = "procedural-masquerade"
+-version = "0.1.5"
++version = "0.1.7"
+ authors = ["Simon Sapin <simon.sapin@exyr.org>"]
+ description = "macro_rules for making proc_macro_derive pretending to be proc_macro"
+ documentation = "https://docs.rs/procedural-masquerade/"
+diff --git a/vendor/procedural-masquerade/lib.rs b/vendor/procedural-masquerade/lib.rs
+index 86e841a084a9..4b51e1497006 100644
+--- a/vendor/procedural-masquerade/lib.rs
++++ b/vendor/procedural-masquerade/lib.rs
+@@ -177,8 +177,15 @@ macro_rules! define_proc_macros {
+                 fn wrapped($input: &str) -> String {
+                     $body
+                 }
++
++                // syn uses a huge amount of stack in debug mode.
+                 let derive_input_string = derive_input.to_string();
+-                wrapped($crate::_extract_input(&derive_input_string)).parse().unwrap()
++                let handle =
++                    ::std::thread::Builder::new().stack_size(128 * 1024 * 1024).spawn(move || {
++                        wrapped($crate::_extract_input(&derive_input_string))
++                    }).unwrap();
++
++                handle.join().unwrap().parse().unwrap()
+             }
+         )+
+     }
+@@ -191,18 +198,44 @@ macro_rules! define_proc_macros {
+ pub fn _extract_input(derive_input: &str) -> &str {
+     let mut input = derive_input;
+ 
+-    for expected in &["#[allow(unused)]", "enum", "ProceduralMasqueradeDummyType", "{",
+-                     "Input", "=", "(0,", "stringify!", "("] {
+-        input = input.trim_left();
+-        assert!(input.starts_with(expected),
+-                "expected prefix {:?} not found in {:?}", expected, derive_input);
++    for expected in &[
++        "#",
++        "[",
++        "allow",
++        "(",
++        "unused",
++        ")",
++        "]",
++        "enum",
++        "ProceduralMasqueradeDummyType",
++        "{",
++        "Input",
++        "=",
++        "(",
++        "0",
++        ",",
++        "stringify",
++        "!",
++        "(",
++    ] {
++        input = input.trim_start();
++        assert!(
++            input.starts_with(expected),
++            "expected prefix {:?} not found in {:?}",
++            expected,
++            derive_input
++        );
+         input = &input[expected.len()..];
+     }
+ 
+-    for expected in [")", ").0,", "}"].iter().rev() {
+-        input = input.trim_right();
+-        assert!(input.ends_with(expected),
+-                "expected suffix {:?} not found in {:?}", expected, derive_input);
++    for expected in [")", ")", ".", "0", ",", "}"].iter().rev() {
++        input = input.trim_end();
++        assert!(
++            input.ends_with(expected),
++            "expected suffix {:?} not found in {:?}",
++            expected,
++            derive_input
++        );
+         let end = input.len() - expected.len();
+         input = &input[..end];
+     }
+@@ -220,33 +253,33 @@ macro_rules! define_invoke_proc_macro {
+         #[doc(hidden)]
+         #[macro_export]
+         macro_rules! $macro_name {
+-            ($proc_macro_name: ident ! $paren: tt) => {
+-                #[derive($proc_macro_name)]
+-                #[allow(unused)]
+-                enum ProceduralMasqueradeDummyType {
+-                    // The magic happens here.
+-                    //
+-                    // We use an `enum` with an explicit discriminant
+-                    // because that is the only case where a type definition
+-                    // can contain a (const) expression.
+-                    //
+-                    // `(0, "foo").0` evalutes to 0, with the `"foo"` part ignored.
+-                    //
+-                    // By the time the `#[proc_macro_derive]` function
+-                    // implementing `#[derive($proc_macro_name)]` is called,
+-                    // `$paren` has already been replaced with the input of this inner macro,
+-                    // but `stringify!` has not been expanded yet.
+-                    //
+-                    // This how arbitrary tokens can be inserted
+-                    // in the input to the `#[proc_macro_derive]` function.
+-                    //
+-                    // Later, `stringify!(...)` is expanded into a string literal
+-                    // which is then ignored.
+-                    // Using `stringify!` enables passing arbitrary tokens
+-                    // rather than only what can be parsed as a const expression.
+-                    Input = (0, stringify! $paren ).0
+-                }
+-            }
+-        }
+-    }
++                                    ($proc_macro_name: ident ! $paren: tt) => {
++                                        #[derive($proc_macro_name)]
++                                        #[allow(unused)]
++                                        enum ProceduralMasqueradeDummyType {
++                                            // The magic happens here.
++                                            //
++                                            // We use an `enum` with an explicit discriminant
++                                            // because that is the only case where a type definition
++                                            // can contain a (const) expression.
++                                            //
++                                            // `(0, "foo").0` evalutes to 0, with the `"foo"` part ignored.
++                                            //
++                                            // By the time the `#[proc_macro_derive]` function
++                                            // implementing `#[derive($proc_macro_name)]` is called,
++                                            // `$paren` has already been replaced with the input of this inner macro,
++                                            // but `stringify!` has not been expanded yet.
++                                            //
++                                            // This how arbitrary tokens can be inserted
++                                            // in the input to the `#[proc_macro_derive]` function.
++                                            //
++                                            // Later, `stringify!(...)` is expanded into a string literal
++                                            // which is then ignored.
++                                            // Using `stringify!` enables passing arbitrary tokens
++                                            // rather than only what can be parsed as a const expression.
++                                            Input = (0, stringify! $paren ).0,
++                                        }
++                                    }
++                                }
++    };
+ }
+-- 
+2.39.0
+

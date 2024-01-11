@@ -11,7 +11,7 @@
 Name:           librsvg2
 Summary:        An SVG library based on cairo
 Version:        2.42.7
-Release:        4%{?dist}
+Release:        5%{?dist}
 
 License:        LGPLv2+
 URL:            https://wiki.gnome.org/Projects/LibRsvg
@@ -22,9 +22,12 @@ Source0:        https://download.gnome.org/sources/librsvg/2.42/librsvg-%{versio
 Patch0:         CVE-2019-20446.patch
 # https://github.com/servo/rust-cssparser/pull/245
 Patch1:         fix-cssparser-build.patch
+# https://issues.redhat.com/browse/RHEL-635
+Patch2:         0001-Upgrade-to-procedural-masquerade-0.1.7.patch
 
 BuildRequires:  chrpath
 BuildRequires:  gcc
+BuildRequires:  git-core
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-png)
@@ -61,6 +64,62 @@ BuildRequires:  (crate(regex) >= 0.2.1 with crate(regex) < 0.3.0)
 
 # We install a gdk-pixbuf svg loader
 Requires:       gdk-pixbuf2%{?_isa}
+
+%if 0%{?bundled_rust_deps}
+# Basically everything apart from Windows and Fuchsia specific things
+Provides: bundled(crate(aho-corasick)) = 0.6.4
+Provides: bundled(crate(bitflags)) = 0.9.1
+Provides: bundled(crate(bitflags)) = 1.0.1
+Provides: bundled(crate(c_vec)) = 1.2.1
+Provides: bundled(crate(cairo-rs)) = 0.3.0
+Provides: bundled(crate(cairo-sys-rs)) = 0.5.0
+Provides: bundled(crate(cssparser)) = 0.23.2
+Provides: bundled(crate(cssparser-macros)) = 0.3.2
+Provides: bundled(crate(downcast-rs)) = 1.0.1
+Provides: bundled(crate(dtoa)) = 0.4.2
+Provides: bundled(crate(dtoa-short)) = 0.3.2
+Provides: bundled(crate(either)) = 1.4.0
+Provides: bundled(crate(float-cmp)) = 0.4.0
+Provides: bundled(crate(glib)) = 0.4.1
+Provides: bundled(crate(glib-sys)) = 0.5.0
+Provides: bundled(crate(gobject-sys)) = 0.5.0
+Provides: bundled(crate(itertools)) = 0.7.7
+Provides: bundled(crate(itoa)) = 0.3.4
+Provides: bundled(crate(lazy_static)) = 1.0.0
+Provides: bundled(crate(libc)) = 0.2.39
+Provides: bundled(crate(matches)) = 0.1.6
+Provides: bundled(crate(memchr)) = 2.0.1
+Provides: bundled(crate(num-traits)) = 0.2.1
+Provides: bundled(crate(pango)) = 0.3.0
+Provides: bundled(crate(pango-sys)) = 0.5.0
+Provides: bundled(crate(pangocairo)) = 0.4.1
+Provides: bundled(crate(pangocairo-sys)) = 0.6.0
+Provides: bundled(crate(phf)) = 0.7.21
+Provides: bundled(crate(phf_codegen)) = 0.7.21
+Provides: bundled(crate(phf_generator)) = 0.7.21
+Provides: bundled(crate(phf_shared)) = 0.7.21
+Provides: bundled(crate(pkg-config)) = 0.3.9
+Provides: bundled(crate(proc-macro2)) = 0.2.3
+Provides: bundled(crate(procedural-masquerade)) = 0.1.7
+Provides: bundled(crate(quote)) = 0.3.15
+Provides: bundled(crate(quote)) = 0.4.2
+Provides: bundled(crate(rand)) = 0.3.22
+Provides: bundled(crate(rand)) = 0.4.2
+Provides: bundled(crate(regex)) = 0.2.7
+Provides: bundled(crate(regex-syntax)) = 0.5.0
+Provides: bundled(crate(siphasher)) = 0.2.2
+Provides: bundled(crate(smallvec)) = 0.6.0
+Provides: bundled(crate(syn)) = 0.11.11
+Provides: bundled(crate(syn)) = 0.12.14
+Provides: bundled(crate(synom)) = 0.11.3
+Provides: bundled(crate(thread_local)) = 0.3.5
+Provides: bundled(crate(ucd-util)) = 0.1.1
+Provides: bundled(crate(unicode-xid)) = 0.0.4
+Provides: bundled(crate(unicode-xid)) = 0.1.0
+Provides: bundled(crate(unreachable)) = 1.0.0
+Provides: bundled(crate(utf8-ranges)) = 1.0.0
+Provides: bundled(crate(void)) = 1.0.2
+%endif
 
 %description
 An SVG library based on cairo.
@@ -139,6 +198,11 @@ rm -vrf %{buildroot}%{_datadir}/doc
 %{_mandir}/man1/rsvg-convert.1*
 
 %changelog
+* Tue Jun 20 2023 Tomas Popela <tpopela@redhat.com> - 2.42.7-5
+- Resolves: RHEL-635 Upgrade to procedural-masquerade 0.1.7 to fix FTBFS with newer Rust
+- Resolves: RHEL-636 librsvg2 is missing Provides: bundled()
+- Resolves: RHEL-637 Add git-core as a BR for autosetup
+
 * Wed May 13 2020 Michael Catanzaro <mcatanzaro@redhat.com> - 2.42.7-4
 - Resolves: rhbz#1804519 Add patch for CVE-2019-20446
 
