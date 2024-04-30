@@ -13,7 +13,7 @@
 Name:           librsvg2
 Summary:        An SVG library based on cairo
 Version:        2.50.7
-Release:        2%{?dist}
+Release:        3%{?dist}
 
 License:        LGPLv2+
 URL:            https://wiki.gnome.org/Projects/LibRsvg
@@ -51,6 +51,149 @@ Requires:       cairo%{?_isa} >= %{cairo_version}
 Requires:       cairo-gobject%{?_isa} >= %{cairo_version}
 # We install a gdk-pixbuf svg loader
 Requires:       gdk-pixbuf2%{?_isa}
+
+%if 0%{?bundled_rust_deps}
+# Generated with a script from Firefox package:
+# https://gitlab.com/redhat/centos-stream/rpms/firefox/-/blob/c9s/get_rust_bundled_provides.sh
+Provides: bundled(crate(aho-corasick)) = 0.7.18
+Provides: bundled(crate(approx)) = 0.3.2
+Provides: bundled(crate(autocfg)) = 1.0.1
+Provides: bundled(crate(bitflags)) = 1.2.1
+Provides: bundled(crate(bytemuck)) = 1.5.1
+Provides: bundled(crate(byteorder)) = 1.4.3
+Provides: bundled(crate(cairo-rs)) = 0.8.1
+Provides: bundled(crate(cairo-sys-rs)) = 0.9.2
+Provides: bundled(crate(cast)) = 0.2.6
+Provides: bundled(crate(cfg-if)) = 1.0.0
+Provides: bundled(crate(convert_case)) = 0.4.0
+Provides: bundled(crate(crossbeam-channel)) = 0.5.1
+Provides: bundled(crate(crossbeam-deque)) = 0.8.0
+Provides: bundled(crate(crossbeam-epoch)) = 0.9.5
+Provides: bundled(crate(crossbeam-utils)) = 0.8.5
+Provides: bundled(crate(cssparser)) = 0.27.2
+Provides: bundled(crate(cssparser-macros)) = 0.6.0
+Provides: bundled(crate(data-url)) = 0.1.0
+Provides: bundled(crate(derive_more)) = 0.99.14
+Provides: bundled(crate(dtoa)) = 0.4.8
+Provides: bundled(crate(dtoa-short)) = 0.3.3
+Provides: bundled(crate(either)) = 1.6.1
+Provides: bundled(crate(encoding)) = 0.2.33
+Provides: bundled(crate(encoding-index-japanese)) = 1.20141219.5
+Provides: bundled(crate(encoding-index-korean)) = 1.20141219.5
+Provides: bundled(crate(encoding-index-simpchinese)) = 1.20141219.5
+Provides: bundled(crate(encoding-index-singlebyte)) = 1.20141219.5
+Provides: bundled(crate(encoding-index-tradchinese)) = 1.20141219.5
+Provides: bundled(crate(encoding_index_tests)) = 0.1.4
+Provides: bundled(crate(float-cmp)) = 0.8.0
+Provides: bundled(crate(form_urlencoded)) = 1.0.1
+Provides: bundled(crate(futf)) = 0.1.4
+Provides: bundled(crate(futures-channel)) = 0.3.15
+Provides: bundled(crate(futures-core)) = 0.3.15
+Provides: bundled(crate(futures-executor)) = 0.3.15
+Provides: bundled(crate(futures-io)) = 0.3.15
+Provides: bundled(crate(futures-macro)) = 0.3.15
+Provides: bundled(crate(futures-task)) = 0.3.15
+Provides: bundled(crate(futures-util)) = 0.3.15
+Provides: bundled(crate(fxhash)) = 0.2.1
+Provides: bundled(crate(gdk-pixbuf)) = 0.8.0
+Provides: bundled(crate(gdk-pixbuf-sys)) = 0.9.1
+Provides: bundled(crate(generic-array)) = 0.13.3
+Provides: bundled(crate(getrandom)) = 0.1.16
+Provides: bundled(crate(gio)) = 0.8.1
+Provides: bundled(crate(gio-sys)) = 0.9.1
+Provides: bundled(crate(glib)) = 0.9.3
+Provides: bundled(crate(glib-sys)) = 0.9.1
+Provides: bundled(crate(gobject-sys)) = 0.9.1
+Provides: bundled(crate(idna)) = 0.2.3
+Provides: bundled(crate(itertools)) = 0.9.0
+Provides: bundled(crate(itoa)) = 0.4.7
+Provides: bundled(crate(language-tags)) = 0.2.2
+Provides: bundled(crate(lazy_static)) = 1.4.0
+Provides: bundled(crate(libc)) = 0.2.95
+Provides: bundled(crate(libm)) = 0.2.1
+Provides: bundled(crate(librsvg_c_api)) = 0.0.1
+Provides: bundled(crate(locale_config)) = 0.3.0
+Provides: bundled(crate(log)) = 0.4.14
+Provides: bundled(crate(mac)) = 0.1.1
+Provides: bundled(crate(markup5ever)) = 0.10.1
+Provides: bundled(crate(matches)) = 0.1.8
+Provides: bundled(crate(matrixmultiply)) = 0.2.4
+Provides: bundled(crate(memchr)) = 2.4.0
+Provides: bundled(crate(memoffset)) = 0.6.4
+Provides: bundled(crate(nalgebra)) = 0.21.1
+Provides: bundled(crate(new_debug_unreachable)) = 1.0.4
+Provides: bundled(crate(nodrop)) = 0.1.14
+Provides: bundled(crate(num-complex)) = 0.2.4
+Provides: bundled(crate(num-integer)) = 0.1.44
+Provides: bundled(crate(num-rational)) = 0.2.4
+Provides: bundled(crate(num-traits)) = 0.2.14
+Provides: bundled(crate(num_cpus)) = 1.13.0
+Provides: bundled(crate(once_cell)) = 1.7.2
+Provides: bundled(crate(pango)) = 0.8.0
+Provides: bundled(crate(pango-sys)) = 0.9.1
+Provides: bundled(crate(pangocairo)) = 0.9.0
+Provides: bundled(crate(pangocairo-sys)) = 0.10.1
+Provides: bundled(crate(paste)) = 0.1.18
+Provides: bundled(crate(paste-impl)) = 0.1.18
+Provides: bundled(crate(percent-encoding)) = 2.1.0
+Provides: bundled(crate(pest)) = 2.1.3
+Provides: bundled(crate(phf)) = 0.8.0
+Provides: bundled(crate(phf_codegen)) = 0.8.0
+Provides: bundled(crate(phf_generator)) = 0.8.0
+Provides: bundled(crate(phf_macros)) = 0.8.0
+Provides: bundled(crate(phf_shared)) = 0.8.0
+Provides: bundled(crate(pin-project-lite)) = 0.2.6
+Provides: bundled(crate(pin-utils)) = 0.1.0
+Provides: bundled(crate(pkg-config)) = 0.3.19
+Provides: bundled(crate(ppv-lite86)) = 0.2.10
+Provides: bundled(crate(precomputed-hash)) = 0.1.1
+Provides: bundled(crate(proc-macro-hack)) = 0.5.19
+Provides: bundled(crate(proc-macro-nested)) = 0.1.7
+Provides: bundled(crate(proc-macro2)) = 1.0.27
+Provides: bundled(crate(quote)) = 1.0.9
+Provides: bundled(crate(rand)) = 0.7.3
+Provides: bundled(crate(rand_chacha)) = 0.2.2
+Provides: bundled(crate(rand_core)) = 0.5.1
+Provides: bundled(crate(rand_distr)) = 0.2.2
+Provides: bundled(crate(rand_pcg)) = 0.2.1
+Provides: bundled(crate(rawpointer)) = 0.2.1
+Provides: bundled(crate(rayon)) = 1.5.1
+Provides: bundled(crate(rayon-core)) = 1.9.1
+Provides: bundled(crate(rctree)) = 0.3.3
+Provides: bundled(crate(regex)) = 1.5.4
+Provides: bundled(crate(regex-syntax)) = 0.6.25
+Provides: bundled(crate(rgb)) = 0.8.27
+Provides: bundled(crate(rsvg_internals)) = 0.0.1
+Provides: bundled(crate(rustc_version)) = 0.3.3
+Provides: bundled(crate(scopeguard)) = 1.1.0
+Provides: bundled(crate(selectors)) = 0.22.0
+Provides: bundled(crate(semver)) = 0.11.0
+Provides: bundled(crate(semver-parser)) = 0.10.2
+Provides: bundled(crate(serde)) = 1.0.126
+Provides: bundled(crate(servo_arc)) = 0.1.1
+Provides: bundled(crate(simba)) = 0.1.5
+Provides: bundled(crate(siphasher)) = 0.3.5
+Provides: bundled(crate(slab)) = 0.4.3
+Provides: bundled(crate(smallvec)) = 1.6.1
+Provides: bundled(crate(stable_deref_trait)) = 1.2.0
+Provides: bundled(crate(string_cache)) = 0.8.1
+Provides: bundled(crate(string_cache_codegen)) = 0.5.1
+Provides: bundled(crate(syn)) = 1.0.72
+Provides: bundled(crate(tendril)) = 0.4.2
+Provides: bundled(crate(thin-slice)) = 0.1.1
+Provides: bundled(crate(time)) = 0.1.43
+Provides: bundled(crate(tinyvec)) = 0.3.4
+Provides: bundled(crate(tinyvec)) = 1.2.0
+Provides: bundled(crate(tinyvec_macros)) = 0.1.0
+Provides: bundled(crate(typenum)) = 1.13.0
+Provides: bundled(crate(ucd-trie)) = 0.1.3
+Provides: bundled(crate(unicode-bidi)) = 0.3.5
+Provides: bundled(crate(unicode-normalization)) = 0.1.19
+Provides: bundled(crate(unicode-xid)) = 0.2.2
+Provides: bundled(crate(url)) = 2.2.2
+Provides: bundled(crate(utf-8)) = 0.7.6
+Provides: bundled(crate(xml5ever)) = 0.16.1
+%endif
 
 %description
 An SVG library based on cairo.
@@ -141,6 +284,9 @@ rm -vrf %{buildroot}%{_datadir}/doc
 %{_mandir}/man1/rsvg-convert.1*
 
 %changelog
+* Wed Oct 04 2023 Tomas Popela <tpopela@redhat.com> - 2.50.7-3
+- Specify bundled crates (RHEL-4102)
+
 * Thu Aug 10 2023 David King <amigadave@amigadave.com> - 2.50.7-2
 - Fix CVE-2023-38633 (#2224947)
 
