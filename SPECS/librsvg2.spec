@@ -13,13 +13,15 @@
 Name:           librsvg2
 Summary:        An SVG library based on cairo
 Version:        2.50.7
-Release:        3%{?dist}
+Release:        3%{?dist}.1
 
 License:        LGPLv2+
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source0:        https://download.gnome.org/sources/librsvg/2.50/librsvg-%{version}.tar.xz
 # https://bugzilla.redhat.com/show_bug.cgi?id=2224947
 Patch0:         librsvg2-CVE-2023-38633.patch
+# https://gitlab.gnome.org/GNOME/librsvg/-/commit/8a1b0cd319e9af2d1e9cf878081dd77f227a0504
+Patch1:         librsvg2-CVE-2026-96889.patch
 
 BuildRequires:  chrpath
 BuildRequires:  gcc
@@ -284,6 +286,10 @@ rm -vrf %{buildroot}%{_datadir}/doc
 %{_mandir}/man1/rsvg-convert.1*
 
 %changelog
+* Mon Sep 28 2026 RHEL Packaging Agent <redhat-ymir-agent@redhat.com> - 2.50.7-3.1
+- CVE-2026-96889 librsvg2: Use-after-free when XML includes have duplicated entities
+  entities
+
 * Wed Oct 04 2023 Tomas Popela <tpopela@redhat.com> - 2.50.7-3
 - Specify bundled crates (RHEL-4102)
 
