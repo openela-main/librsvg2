@@ -11,7 +11,7 @@
 Name:           librsvg2
 Summary:        An SVG library based on cairo
 Version:        2.42.7
-Release:        5%{?dist}
+Release:        6%{?dist}
 
 License:        LGPLv2+
 URL:            https://wiki.gnome.org/Projects/LibRsvg
@@ -24,6 +24,9 @@ Patch0:         CVE-2019-20446.patch
 Patch1:         fix-cssparser-build.patch
 # https://issues.redhat.com/browse/RHEL-635
 Patch2:         0001-Upgrade-to-procedural-masquerade-0.1.7.patch
+# https://issues.redhat.com/browse/RHEL-267981
+# https://gitlab.gnome.org/GNOME/librsvg/-/commit/8a1b0cd319e9af2d1e9cf878081dd77f227a0504
+Patch3:         CVE-2026-96889.patch
 
 BuildRequires:  chrpath
 BuildRequires:  gcc
@@ -66,7 +69,8 @@ BuildRequires:  (crate(regex) >= 0.2.1 with crate(regex) < 0.3.0)
 Requires:       gdk-pixbuf2%{?_isa}
 
 %if 0%{?bundled_rust_deps}
-# Basically everything apart from Windows and Fuchsia specific things
+# Generated with a script from Firefox package:
+# https://gitlab.com/redhat/centos-stream/rpms/firefox/-/blob/c9s/get_rust_bundled_provides.sh
 Provides: bundled(crate(aho-corasick)) = 0.6.4
 Provides: bundled(crate(bitflags)) = 0.9.1
 Provides: bundled(crate(bitflags)) = 1.0.1
@@ -107,6 +111,7 @@ Provides: bundled(crate(rand)) = 0.3.22
 Provides: bundled(crate(rand)) = 0.4.2
 Provides: bundled(crate(regex)) = 0.2.7
 Provides: bundled(crate(regex-syntax)) = 0.5.0
+Provides: bundled(crate(rsvg_internals)) = 0.0.1
 Provides: bundled(crate(siphasher)) = 0.2.2
 Provides: bundled(crate(smallvec)) = 0.6.0
 Provides: bundled(crate(syn)) = 0.11.11
@@ -198,6 +203,11 @@ rm -vrf %{buildroot}%{_datadir}/doc
 %{_mandir}/man1/rsvg-convert.1*
 
 %changelog
+* Mon Oct 19 2026 RHEL Packaging Agent <redhat-ymir-agent@redhat.com> - 2.42.7-6
+- CVE-2026-96889 librsvg2: Use-after-free when XML includes have duplicated entities
+  duplicated entities
+- Resolves: RHEL-267981
+
 * Tue Jun 20 2023 Tomas Popela <tpopela@redhat.com> - 2.42.7-5
 - Resolves: RHEL-635 Upgrade to procedural-masquerade 0.1.7 to fix FTBFS with newer Rust
 - Resolves: RHEL-636 librsvg2 is missing Provides: bundled()
