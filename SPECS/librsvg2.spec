@@ -288,7 +288,7 @@ rm -vrf %{buildroot}%{_datadir}/doc
 %changelog
 * Mon Sep 28 2026 RHEL Packaging Agent <redhat-ymir-agent@redhat.com> - 2.50.7-3.1
 - CVE-2026-96889 librsvg2: Use-after-free when XML includes have duplicated entities
-  entities
+  duplicated entities
 
 * Wed Oct 04 2023 Tomas Popela <tpopela@redhat.com> - 2.50.7-3
 - Specify bundled crates (RHEL-4102)
